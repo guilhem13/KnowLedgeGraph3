@@ -63,6 +63,7 @@ python -m flask run
 ***
 ## Run with docker
 
+All feature are available on dockerfile excep the entrypoint getner with AWS ressources.  
 ### Installation
 
 ```shell
@@ -76,16 +77,18 @@ docker run -d -p 5000:5000 projetpythonapi
 
 ***
 ## Usage
+
 ***
 
 ## Entrypoint /getner 
+(This feature is not available with the dockerfile.)
 
 You have to add you AWS security token. For that: 
 - Be sure to start your Lab
 - Create a folder in your computer  => ~/.aws/ 
 - Add a credentials file inside this folder 
 - Then you have  ~/.aws/credentials
-- Inside this credentials file add the content of the Cloud Access AWS with vi or vim
+- Inside this credentials file add the content of the AWS CLI with vi or vim
 
 The cloud access aws looks like that : 
 
@@ -106,3 +109,33 @@ Usage of the entrypoint:
 curl -F 'file=@document.pdf' localhost:5000/getner
 ```
 
+## Entrypoint /arxiv/sizebdd
+
+No requirements to do 
+It returns the size of database "bddarxiv.db"
+It's documentation is available on http://localhost:5000/apidocs/
+
+## Entrypoint /arxiv/feedbdd/<nb_paper>
+No requirements to do 
+Update the database (add more papers) inside the database by specifing the number of papers to add
+It's documentation is available on http://localhost:5000/apidocs/
+
+## Entrypoint /get/onotlogy
+no requirements to do 
+It returns the ontology file main by the backend script main.py with XXX papers. 
+It's documentation is available on http://localhost:5000/apidocs/
+
+### Launch the main.py backend script which generates the ontology file 
+
+You have to launch the ServiceNer webservice. The procedure is available on its Readme.md file 
+You also have to launch the Cermine by doing.
+
+```shell
+docker run -p 8072:8080 elifesciences/cermine:1.13
+```
+launch the script by doing => python3 main.py - i X
+Where X is the number od papers to process to create the ontology
+## Entrypoint /arxiv/pipeline/<nb_paper>
+
+No requirements to do 
+It's documentation is available on http://localhost:5000/apidocs/

@@ -1,6 +1,6 @@
 openapi: 3.0.3
 tags:
-  - "Extract entities"
+  - "Extract entities with AWS"
 summary: "Extract entities from an uploading PDF file"
 description: "This route allows the user to upload a pdf file and return the entities detected in this file"
 consumes:

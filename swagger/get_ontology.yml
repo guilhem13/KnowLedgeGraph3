@@ -1,8 +1,8 @@
 openapi: 3.0.3
 tags:
   - "Arxiv Ontology"
-summary: "It returns the ontology made by the main.py script"
-description: "This route allows the user to get the result of ontology processing"
+summary: "Returns the ontology file made by the main.py script"
+description: "This route allows the user to get the result of ontology processing made with XXX papers insde the main.py script"
 produces:
 - "application/file"
 responses:
@@ -19,7 +19,13 @@ responses:
           description: Export ontology into a owl file
 
         '404':
-          description: "Ontology not found"
+          description: "Ontology file not found"
           schema:
             type: "array"
+        
+        '400':
+          description: "Error while trying to get the file"
+          schema:
+            type: "array"
+            
             

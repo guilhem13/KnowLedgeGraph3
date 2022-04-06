@@ -1,8 +1,8 @@
 openapi: 3.0.3
 tags:
-  - "Requests arxiv"
-summary: "it returns the ontology made by the TLA pipeline directly from arxiv API"
-description: "This route allows the user to get the result of ontology processing"
+  - "Requests pipeline"
+summary: "Returns the ontology made by the TLA pipeline directly from arxiv API with X papers"
+description: "This route allows the user to get the result of ontology processing made directly from arxiv. It can take a long time.Because it's process directly all the papers"
 produces:
 - "application/file"
 parameters:

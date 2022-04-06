@@ -1,8 +1,8 @@
 openapi: 3.0.3
 tags:
   - "Size database"
-summary: "Return the size of the database"
-description: "Return the size of the database"
+summary: "Returns the size of the database"
+description: "Returns the size of the SqlAchemy database :bddarxiv.db"
 produces:
 - "application/json"
 responses:

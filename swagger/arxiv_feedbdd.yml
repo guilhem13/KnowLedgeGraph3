@@ -1,24 +1,24 @@
 openapi: 3.0.3
 tags:
   - "Update database"
-summary: "Return the size of the database"
-description: "Return the size of the database"
+summary: "add more papers in the database"
+description: "This database include 10 001 papers. This entrypoint can add more data"
 produces:
 - "application/json"
 parameters:
       - name: nb_paper
         in: path
-        description: "nb paper to add to the bdd"
+        description: "nb paper to add to the database"
         type: string
         required: true
 responses:
+
         '200':
           description: "Successful response"
           schema:
-            type: "json"
-                
+            type: "json"                
         '400':
-              description: "Problem occurs when uploading files into database"
+              description: "Problem occurs when trying to update the database"
               schema:
                 type: "json"
 

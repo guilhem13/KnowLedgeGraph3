@@ -153,7 +153,7 @@ class Textprocessed:
         check_forbidden_word = False
         stop =False
         index = 0
-        forbidden_list =['Analysis','Pattern','Recognition','Vision','Computer','Learning','Machine','Artificial','Intelligence','Computer','Science','Representation','Continuous','Facilities','Council','Dominican','Republic','Multiagent','Systems','Autonomous','Agents','Biometrics','Lab','Physics','Neural','Systems','Mathematics','Mathematical','Computational','Meta-Learning',"Parameter","Available","Online","Practical","Momentum","AGCN","AGCN","Engineering","Data","Retrieval","Programming","Research","Verification","Network"]
+        forbidden_list =['Analysis','Pattern','Recognition','Vision','Computer','Learning','Machine','Artificial','Intelligence','Computer','Science','Representation','Continuous','Facilities','Council','Dominican','Republic','Multiagent','Systems','Autonomous','Agents','Biometrics','Lab','Physics','Neural','Systems','Mathematics','Mathematical','Computational','Meta-Learning',"Parameter","Available","Online","Practical","Momentum","AGCN","AGCN","Engineering","Data","Retrieval","Programming","Research","Verification","Network","Interestingly","Sciences","Representations","Foundations","Knowledge","Discovery","Conference","Proceedings"]
         while index < len(forbidden_list) or stop == False: 
             if entity.nom == forbidden_list[index]:
                 check_forbidden_word = True
@@ -225,11 +225,11 @@ class Textprocessed:
             else []
         )
        
-        specific_format_exception2 = self.find_regex_style(
+        specific_format_exception2 = self.find_regex_style( #TODO ICI change on enlève -3
             "[A-Z][a-z]+-[A-Z][a-z]+\s[A-Z][a-z]+[,.]", text
         )  # Minh-Thong Luang
         specific_format_exception2 = (
-            [x[3:-1] for x in specific_format_exception2]
+            [x[:-1] for x in specific_format_exception2]
             if len(specific_format_exception2) > 0
             else []
         )
@@ -237,7 +237,7 @@ class Textprocessed:
             "[A-Z][a-z]+\s[A-Z][a-z]+-[A-Z][a-z]+[,.]", text
         )  # Luang Minh-Thong
         specific_format_exception3 = (
-            [x[3:-1] for x in specific_format_exception3]
+            [x[:-1] for x in specific_format_exception3]
             if len(specific_format_exception3) > 0
             else []
         )
