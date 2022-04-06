@@ -1,0 +1,24 @@
+openapi: 3.0.3
+tags:
+  - "Update database"
+summary: "Return the size of the database"
+description: "Return the size of the database"
+produces:
+- "application/json"
+parameters:
+      - name: nb_paper
+        in: path
+        description: "nb paper to add to the bdd"
+        type: string
+        required: true
+responses:
+        '200':
+          description: "Successful response"
+          schema:
+            type: "json"
+                
+        '400':
+              description: "Problem occurs when uploading files into database"
+              schema:
+                type: "json"
+

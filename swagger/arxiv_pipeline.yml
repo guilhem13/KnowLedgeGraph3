@@ -1,0 +1,34 @@
+openapi: 3.0.3
+tags:
+  - "Requests arxiv"
+summary: "it returns the ontology made by the TLA pipeline directly from arxiv API"
+description: "This route allows the user to get the result of ontology processing"
+produces:
+- "application/file"
+parameters:
+      - name: nb_paper
+        in: path
+        type: string
+        required: true
+responses:
+        '200':
+          schema:
+            type: file
+          headers:
+            Content-type:
+              type: string
+              description: text/owl; charset=utf-8
+            Content-Disposition:
+              type: string
+              description: attachment; filename=onto10_done.owl
+          description: Export ontology into a owl file
+
+        '400':
+          description: "Problem while created the ontology "
+          schema:
+            type: "array" 
+
+        '404':
+          description: "Ontology not found"
+          schema:
+            type: "array"
