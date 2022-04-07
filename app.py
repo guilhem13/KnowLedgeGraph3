@@ -130,7 +130,7 @@ def create_pipeline_from_arxiv(nb_paper):
 @app.route("/get/ontology")
 @swag_from("swagger/get_ontology.yml")
 def get_files():
-    base_path ="knowledgegraph/owl/onto10_done.owl"
+    base_path ="onto10_done.owl"
     try:
         return send_from_directory(app.config['UPLOAD_FOLDER'],base_path, as_attachment=True)
         
