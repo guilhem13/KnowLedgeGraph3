@@ -2,8 +2,8 @@
 
 It's a simple API which can : 
 - return entities of an uploading pdf thanks to AWS comprehend Service(front)
-- return ontology made with 1000 papers in zip format (front)
-- manage arxiv database 's API  (front)
+- return ontology made with 500 papers in zip format (front)
+- manage the sqlachemey arxiv database 's(front)
 - Process papers to generate ontology (back)
 
 ***
@@ -13,14 +13,14 @@ It's a simple API which can :
  *  Feature 1 : return entities of an uploading pdf
       * Endpoint : /getner
       * Type : POST
- *  Feature 2 : get ontology made with 1000 papers  
+ *  Feature 2 : get ontology made with 500 papers  
       * Endpoint : /get/ontology
       * Type : GET
  *  Feature 3 : get the size of the database
       * Endpoint : /arxiv/sizebdd
       * Type : GET
- *  Feature 4 : get the size of the database
-      * Endpoint : /arxiv/sizebdd
+ *  Feature 4 : get the ontology made by the TLA pipeline directly from arxiv API with X papers
+      * Endpoint : /arxiv/pipeline/
       * Type : GET 
 
 ***
@@ -28,7 +28,7 @@ It's a simple API which can :
 
 Code has been made with Python 3.8.10
 
-Create a virtualenv and activate it:
+Create a virtualenv and activate it if virtual environment not there:
 
 ```shell
 python3 -m venv venv
@@ -63,7 +63,8 @@ python -m flask run
 ***
 ## Run with docker
 
-All feature are available on dockerfile excep the entrypoint getner with AWS ressources.  
+All features are available on dockerfile ** except the entrypoint getner with AWS ressources **.
+Because it needs AWS credentials.  
 ### Installation
 
 ```shell
@@ -81,7 +82,10 @@ docker run -d -p 5000:5000 projetpythonapi
 ***
 
 ## Entrypoint /getner 
-(This feature is not available with the dockerfile.)
+(This feature is not available with the dockerfile.For thath you need to create a shared volume to put the "credentials file" at runtime 
+like that => docker run -v $HOME/.aws/credentials:/home/app/.aws/credentials:ro projetpythonapi
+)It's recommanded to not use the dockerfile to this entrypoint !
+
 
 You have to add you AWS security token. For that: 
 - Be sure to start your Lab
@@ -90,7 +94,7 @@ You have to add you AWS security token. For that:
 - Then you have  ~/.aws/credentials
 - Inside this credentials file add the content of the AWS CLI with vi or vim
 
-The cloud access aws looks like that : 
+The AWS CLI looks like that : 
 
 ```shell
 [default]
@@ -125,17 +129,31 @@ no requirements to do
 It returns the ontology file main by the backend script main.py with XXX papers. 
 It's documentation is available on http://localhost:5000/apidocs/
 
-### Launch the main.py backend script which generates the ontology file 
+## Entrypoint /arxiv/pipeline/
+no requirements to do 
+the ontology made by the TLA pipeline directly from arxiv API with X papers
+It's documentation is available on http://localhost:5000/apidocs/
 
-You have to launch the ServiceNer webservice. The procedure is available on its Readme.md file 
-You also have to launch the Cermine by doing.
+### Launch the app 
+
+1)) You have to launch the Cermine by doing.
 
 ```shell
 docker run -p 8072:8080 elifesciences/cermine:1.13
 ```
-launch the script by doing => python3 main.py - i X
-Where X is the number od papers to process to create the ontology
-## Entrypoint /arxiv/pipeline/<nb_paper>
+2) Run with docker or direclty with the app.py ( Run part on readme)
 
-No requirements to do 
-It's documentation is available on http://localhost:5000/apidocs/
+
+### Launch the main.py backend script which generates the ontology file 
+
+1 ) You have to launch the ServiceNer webservice. The procedure is available on its Readme.md file with docker 
+
+2 ) You also have to launch the Cermine by doing.
+
+```shell
+docker run -p 8072:8080 elifesciences/cermine:1.13
+```
+3) Launch the backend script by doing => python3 main.py - i X
+
+Where X is the number of papers to process to create the ontology
+
