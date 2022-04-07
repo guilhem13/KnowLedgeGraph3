@@ -46,12 +46,12 @@ pip install -r requirements.txt
 In production 
 
 ```shell
-python3 webapp.py
+python3 app.py
 ```
 In developement 
 
 ```shell
-export FLASK_APP=webapp.py
+export FLASK_APP=app.py
 export FLASK_ENV=development
 flask run
 ```
