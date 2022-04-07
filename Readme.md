@@ -115,45 +115,40 @@ curl -F 'file=@document.pdf' localhost:5000/getner
 
 ## Entrypoint /arxiv/sizebdd
 
-No requirements to do 
-It returns the size of database "bddarxiv.db"
-It's documentation is available on http://localhost:5000/apidocs/
+- No requirements to do 
+- It returns the size of database "bddarxiv.db"
+- It's documentation is available on http://localhost:5000/apidocs/
 
 ## Entrypoint /arxiv/feedbdd/<nb_paper>
-No requirements to do 
-Update the database (add more papers) inside the database by specifing the number of papers to add
-It's documentation is available on http://localhost:5000/apidocs/
+- No requirements to do 
+- Update the database (add more papers) inside the database by specifing the number of papers to add
+- It's documentation is available on http://localhost:5000/apidocs/
 
 ## Entrypoint /get/onotlogy
-no requirements to do 
-It returns the ontology file main by the backend script main.py with XXX papers. 
-It's documentation is available on http://localhost:5000/apidocs/
+- No requirements to do 
+- It returns the ontology file main by the backend script main.py with XXX papers. 
+- It's documentation is available on http://localhost:5000/apidocs/
 
 ## Entrypoint /arxiv/pipeline/
-no requirements to do 
-the ontology made by the TLA pipeline directly from arxiv API with X papers
-It's documentation is available on http://localhost:5000/apidocs/
-
-### Launch the app 
-
-1)) You have to launch the Cermine by doing.
-
+- launch Cermine by doing 
 ```shell
 docker run -p 8072:8080 elifesciences/cermine:1.13
 ```
-2) Run with docker or direclty with the app.py ( Run part on readme)
+- the ontology made by the TLA pipeline directly from arxiv API with X papers
+- It's documentation is available on http://localhost:5000/apidocs/
 
 
-### Launch the main.py backend script which generates the ontology file 
+### Launch the main.py backend script which generates the ontology file for X papers
 
-1 ) You have to launch the ServiceNer webservice. The procedure is available on its Readme.md file with docker 
-
-2 ) You also have to launch the Cermine by doing.
-
+- 1) Check if the port 5000 is available
+- 2) You have to launch the ServiceNer webservice. The procedure is available on its Readme.md file with docker 
+- 3) You also have to launch the Cermine by doing.
 ```shell
 docker run -p 8072:8080 elifesciences/cermine:1.13
 ```
-3) Launch the backend script by doing => python3 main.py - i X
+- Launch the backend script by doing => python3 main.py - i X
 
 Where X is the number of papers to process to create the ontology
+
+ServicerNER and App are not supposed being run in the same time on the same computer because they have the same port !
 
