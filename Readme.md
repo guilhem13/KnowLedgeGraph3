@@ -82,7 +82,7 @@ docker run -d -p 5000:5000 projetpythonapi
 ***
 
 ## Entrypoint /getner 
-(This feature is not available with the dockerfile.For thath you need to create a shared volume to put the "credentials file" at runtime 
+(This feature is not available with the dockerfile. For that you need to create a shared volume to put the "credentials file" at runtime 
 like that => docker run -v $HOME/.aws/credentials:/home/app/.aws/credentials:ro projetpythonapi
 )It's recommanded to not use the dockerfile to this entrypoint !
 
