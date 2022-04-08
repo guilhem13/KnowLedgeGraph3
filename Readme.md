@@ -3,7 +3,7 @@
 It's a simple API which can : 
 - return entities of an uploading pdf thanks to AWS comprehend Service(front)
 - return ontology made with 500 papers in zip format (front)
-- manage the sqlachemey arxiv database 's(front)
+- manage the sqlachemey arxiv database's(front)
 - Process papers to generate ontology (back)
 
 ***
@@ -28,6 +28,7 @@ It's a simple API which can :
 
 Code has been made with Python 3.8.10
 
+Virtual environment is normaly inside the project.
 Create a virtualenv and activate it if virtual environment not there:
 
 ```shell
@@ -60,6 +61,7 @@ if flask run doesn't work make :
 ```shell
 python -m flask run
 ```
+if developement doesn't work use production method.
 ***
 ## Run with docker
 
@@ -126,7 +128,7 @@ curl -F 'file=@document.pdf' localhost:5000/getner
 
 ## Entrypoint /get/onotlogy
 - No requirements to do 
-- It returns the ontology file main by the backend script main.py with XXX papers. 
+- It returns the ontology file main by the backend script main.py with 500 papers. 
 - It's documentation is available on http://localhost:5000/apidocs/
 
 ## Entrypoint /arxiv/pipeline/
@@ -134,7 +136,7 @@ curl -F 'file=@document.pdf' localhost:5000/getner
 ```shell
 docker run -p 8072:8080 elifesciences/cermine:1.13
 ```
-- the ontology made by the TLA pipeline directly from arxiv API with X papers
+- the ontology made by the TLA pipeline directly from arxiv API with X papers. Where X is the argument of the entrypoint
 - It's documentation is available on http://localhost:5000/apidocs/
 
 
@@ -148,7 +150,9 @@ docker run -p 8072:8080 elifesciences/cermine:1.13
 ```
 - Launch the backend script by doing => python3 main.py - i X
 
-Where X is the number of papers to process to create the ontology
+Where X is the number of papers to process to create the ontology. 
+__The resulted ontology (with X papers) is in knowledgegraph/owl/ directory with the name onto10_done.owl. 
+If you want to display it in the API instead of the Ontology made with 500 papers. You have to place the file at the root place wheree a file named onto10_done.owl is located 
 
 ServicerNER and App are not supposed being run in the same time on the same computer because they have the same port !
 
