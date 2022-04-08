@@ -31,7 +31,7 @@ class Pipeline:
     def make_traitement_pipeline(self, block_paper, out_queue, batch_size):
         arxiv_data = block_paper
         res_lst = []
-        f = open("test2.json", "a")
+        #f = open("test2.json", "a")
         workers = [
             mp.Process(target=self.multi_process, args=(ele, out_queue))
             for ele in block_paper
@@ -45,8 +45,8 @@ class Pipeline:
             res_lst.append(out_queue.get())
 
         
-        for test in res_lst:
+        """for test in res_lst:
             f.write(json.dumps(test.__dict__, default=lambda x: x.__dict__))
-        f.close()
+        f.close()"""
         return res_lst
 

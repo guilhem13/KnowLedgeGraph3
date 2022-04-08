@@ -14,11 +14,7 @@ parameters:
 responses:
 
         '200':
-          description: "Successful response"
-          schema:
-            type: "json"                
+          description: "Successful response"              
         '400':
               description: "Problem occurs when trying to update the database"
-              schema:
-                type: "json"
 

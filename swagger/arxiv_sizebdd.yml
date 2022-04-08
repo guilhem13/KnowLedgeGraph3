@@ -8,10 +8,6 @@ produces:
 responses:
         '200':
           description: "Successful response"
-          schema:
-            type: "json"
                 
         '400':
               description: "Problem occurs when requesting the database"
-              schema:
-                type: "json"

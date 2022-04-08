@@ -25,10 +25,6 @@ responses:
 
         '400':
           description: "Problem while created the ontology "
-          schema:
-            type: "array" 
 
         '404':
           description: "Ontology not found"
-          schema:
-            type: "array"
